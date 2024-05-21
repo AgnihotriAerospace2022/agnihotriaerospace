@@ -83,7 +83,7 @@ const About = () => {
                 text-2xl ml-10 
                 ">
                 Raghupati G Bhat
-                "Full Name"
+                
 
 
                 </p>
