@@ -1,5 +1,5 @@
 import React from 'react';
-import './PageLoader.css'; 
+import './pageLoader.css'; 
 import { ReactTyped } from "react-typed";
 
 const PageLoader = () => {

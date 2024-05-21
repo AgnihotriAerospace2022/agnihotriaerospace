@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 import "./app.css";
 import Navigate from "./components/navigation/navigation";
 import Footer from "./components/footer/footer";
