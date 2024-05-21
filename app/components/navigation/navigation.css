@@ -1,0 +1,93 @@
+
+
+.logo
+{
+
+  width:100px ;  
+  height :100px   ;
+ 
+
+}
+.color 
+{
+    background-color:#020B11;
+}
+#logoimage
+{
+    height : 100% ;
+    width : 100% ;
+    display:inline-block;
+    
+}
+.links 
+{
+    display:inline-block;
+    
+}
+.div1
+{
+    display:inline-block ;
+    
+    
+}
+.div1 > a{
+    color :white ;
+    display:inline-block;
+    margin-left: 38px;
+    font-family: 'Josefin Sans', sans-serif;
+    text-decoration: none;
+   
+}
+
+.humbergIcon
+{
+    display:none;
+}
+
+#sidebarToggle {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+  }
+  
+  #sidebarToggle svg {
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+  }
+  
+.menu {
+    
+    width: 30px;
+    height: 30px;
+    margin-right :30px;
+    display: flex;
+    flex-direction: column;
+    gap:4px;
+}
+
+  .humburg
+  {
+    background-color: white;
+    width:22px;
+    height :03px;
+    border-radius: 20px;
+  }
+
+  .humburg.clicked:nth-child(1){
+    transform:rotate(45deg) translate(08px, 05px) ;
+    transition: ease-out 0.5s;
+  }
+  .humburg.clicked:nth-child(2){ 
+    transform:scale(0.1);
+    transition: ease-out 0.5s;
+  }
+  .humburg.clicked:nth-child(3){
+    transform: rotate(135deg) translate(-08px, 05px);
+    transition: ease-out 0.5s;}
+
+   
+    .humburg.unclicked{
+      transform: rotate(0) translate(0);
+      transition: cubic-bezier(0.1,0.6,0.2,1.6) 0.5s;}

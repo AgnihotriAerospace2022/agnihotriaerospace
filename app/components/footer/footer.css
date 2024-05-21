@@ -1,0 +1,124 @@
+body
+{
+    background-color: black;
+    
+}
+.footer-body
+{   padding :0;
+   /*apply //color //from figma to get the hex code-*/
+    height : 270px;
+    background-color: black;
+    position: relative;
+   
+}
+
+.logo {
+    
+    display: inline-block;
+    z-index: 2;  
+    margin-left :40px;
+    margin-right : 50px ; 
+    margin-top: 5px ;
+    width: 300px ;
+    height : 200px ;
+}
+
+.vertical-line  
+{   display: inline-block;
+    height :170px ;
+    margin-bottom : 0px;
+    margin-top: 34px;
+    margin-left:07px;
+    border-left :1px solid rgb(7, 6, 6) ;
+}
+
+.input
+{
+    margin-top:100px
+}
+.horizontal-line
+{   display: block;
+    height :0 ;
+    
+    top : 180px ;
+    left :100px ;
+    right :100px;
+    position: absolute;
+    border-bottom :1px solid rgb(139, 138, 138) ;
+}
+
+.submit {
+    margin-top:15px;
+    width :200px;
+    height : 40px ;
+    background-color: white ;
+    padding-top: 1px;
+    padding-bottom: 1px;
+    padding-left: 8px;
+    padding-right:8px;
+    font-size : 16px;
+    border-radius : 20px;
+    color :rgba(72, 119, 0, 0.945);
+    border : 2px solid rgba(98, 161, 2, 0.685);
+    transition: background-color .65s , color 0.65s;
+}
+.submit:hover
+{
+    background-color :rgba(98, 161, 2, 0.685);
+    color :white ;
+}
+
+.items-grid {
+    display : inline-block  ;
+    position: absolute;
+    top : 42px;
+    right : 350px ;
+}
+
+.icon-section {
+    position: absolute;
+    top : 200px ;
+    right :100px;
+}
+.icon
+{
+    margin : 8px ;
+   display : inline-block;
+   cursor : pointer ;
+   fill : grey ;
+   display:inline-block;
+}
+.mail
+{
+    display:inline-block;
+    position : absolute ;
+    right : 400px ;
+    bottom : 15px ;
+}
+
+li
+{
+    color : grey ;
+}
+
+li:hover 
+{
+    color : white ;
+    cursor: pointer;
+}
+.iconsanim
+{
+    display : flex; 
+}
+
+.iconsanim img 
+{
+    cursor: pointer;
+    width : 35px;
+    transition :width .3s;
+}
+
+.iconsanim img:hover
+{
+    width : 30px ;
+}
