@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agnihotri Aerospace Pvt Ltd</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+    /* --- PAGE LOAD ANIMATION --- */
+    @keyframes pageLoadFade {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    /* Apply animation to body */
+    body {
+        animation: pageLoadFade 1.5s ease-out forwards;
+    }
+
+    /* --- CLEAN & STATIC MODAL --- */
+/* --- MOBILE-FIRST MODAL CSS --- */
+.modal-overlay {
+    display: none; /* Controlled by JS */
+    position: fixed;
+    /* Use 'inset' to lock to all corners perfectly */
+    inset: 0;
+    width: 100%;
+    /* 'dvh' is critical for mobile - it calculates height excluding browser bars */
+    height: 100dvh; 
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    z-index: 999999;
+    
+    /* The centering engine */
+    justify-content: center;
+    align-items: center;
+    /* Prevent the overlay itself from scrolling */
+    overflow: hidden; 
+    touch-action: none; 
+}
+
+/* Hide Quick Links on mobile (screens smaller than 768px) */
+@media (max-width: 768px) {
+    .footer-col.links {
+        display: none;
+    }
+}
+
+.modal-content {
+    background: #1a1a1a; /* Solid color prevents 'see-through' jumping */
+    padding: 30px 20px;
+    border-radius: 24px;
+    width: 85%; /* Perfect for mobile width */
+    max-width: 350px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    
+    /* Animation: Subtle fade only to prevent movement */
+    animation: simpleFade 0.25s ease-out;
+}
+
+@keyframes simpleFade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Prevent background jump/scroll on mobile */
+body.stop-scroll {
+    overflow: hidden;
+    height: 100dvh;
+    position: fixed; /* Force-lock background on iOS */
+    width: 100%;
+}
+
+/* Mobile Icon Sizes */
+.modal-content h2 {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 20px;
+}
+
+.modal-icons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+.modal-icons a {
+    color: white;
+    font-size: 1.8rem;
+    background: rgba(255, 255, 255, 0.08);
+    width: 65px;
+    height: 65px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 18px;
+    text-decoration: none;
+}
+
+.close-text {
+    color: #aaa;
+    font-size: 0.9rem;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+</style>
+
+</head>
+<body>
+
+    <div id="contactModal" class="modal-overlay" onclick="closeModal(event)">
+        <div class="modal-content">
+            <h2>DM Us</h2>
+            
+            <div class="modal-icons">
+                <a href="mailto:maha@agnikhotriaerospace.com">
+                    <i class="fa fa-envelope"></i>
+                </a>
+                
+                <a href="https://www.instagram.com/agnihotri_aerospace/" target="_blank">
+                    <i class="fa fa-instagram"></i>
+                </a>
+                
+                <a href="https://www.linkedin.com/company/agnihotri-aerospace/" target="_blank">
+                    <i class="fa fa-linkedin"></i>
+                </a>
+            </div>
+
+            <p class="close-text" onclick="closeModalBtn()">go back</p>
+        </div>
+    </div>
+
+
+    <section class="sub-header">
+        
+        <nav>
+            <a href="index.html"><img src="images/logo.png"></a>
+            <div class="nav-links" id="navLinks">
+                <i class="fa fa-times" onclick="hideMenu()"></i>
+                <ul>
+                    <li class="dropdown">
+                        <a href="javascript:void(0)" class="dropdown-btn">
+                            PRODUCT <i class="fa fa-caret-down"></i>
+                        </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#propulsion">Propulsion Control</a></li>
+                                    <li><a href="#avionics">Flight Electronics</a></li>
+                                    <li><a href="#thrusters">Thrusters</a></li>
+                                    <li><a href="#interface">Interface</a></li>
+                                </ul>
+                    </li>
+                    <li><a href="about.html">ABOUT</a></li>
+                    <li><a href="gallery.html">JOURNEY</a></li>
+                    <li><a href="workwithus.html">WORK WITH US</a></li>
+                    <li><a href="contact.html">CONTACT</a></li>
+                </ul>
+            </div>
+            <i class="fa fa-bars" onclick="showMenu()"></i>
+        </nav>
+          <div class="menu-overlay" id="menuOverlay"></div>
+        
+        <h1>WORK WITH US</h1>
+    </section>
+
+    <section class="blog-content">
+        <div class="row">
+            <div class="blog-left">
+                <img src="images/workwithus">
+                <h2>Our Internship Programs and Jobs</h2>
+                <p>Join Agnihotri Aerospace and work on next-generation UAV and avionics technologies.</p>
+                <br>
+                <div class="work-row">
+                    
+                    <div class="work-card" onclick="openModal()">
+                        <h3>Job</h3>
+                        <p>Agnithotri Aerospace is excited to announce that we are now accepting applications for both <strong>job positions</strong>. Join our innovative team and contribute to cutting-edge aerospace projects while advancing your career.</p>
+                    </div>
+
+                    <div class="work-card" onclick="openModal()">
+                        <h3>Internship</h3>
+                        <p>Agnithotri Aerospace is excited to announce that we are now accepting applications for <strong>internships</strong>. Join our innovative team and contribute to cutting-edge aerospace projects while advancing your career.</p>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Left: About -->
+    <div class="footer-col about"><br><br>
+            <h2><img src="images/logo.png" alt="Logo" style="width: 200px; height: auto;"></h2>
+           <div class="footer-socials">
+
+    <!-- Email -->
+<a href="mailto:admin@agnihotriaerospace.com?subject=Inquiry%20regarding%20Agnihotri%20Aerospace" class="social-icon email">
+    <i class="fa fa-envelope"></i>
+</a>
+        <!-- LinkedIn -->
+    <a href="https://www.linkedin.com/company/agnihotri-aerospace/" 
+       target="_blank" 
+       class="social-icon linkedin">
+        <i class="fa fa-linkedin"></i>
+    </a>
+
+    <!-- Instagram -->
+    <a href="https://www.instagram.com/agnihotri_aerospace/" 
+       target="_blank" 
+       class="social-icon instagram">
+        <i class="fa fa-instagram"></i>
+    </a>
+
+    <!-- YouTube -->
+    <a href="https://www.youtube.com/@AgnihotriAerospace" 
+       target="_blank" 
+       class="social-icon youtube">
+        <i class="fa fa-youtube-play"></i>
+    </a>
+
+
+
+</div>
+
+    </div>
+
+    <!-- Center: Quick Links -->
+    <div class="footer-col links">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#propulsion">Product</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="gallery.html">Journey</a></li>
+        <li><a href="workwithus.html">Work With Us</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Right: Contact -->
+    <div class="footer-col contact">
+        <h3>Contact</h3>
+      <p>admin@agnihotriaerospace.com</p>
+        <h3>Address</h3>
+        <p>Taayi Anugraha Hullunde,Siddapur<br>Uttara Kannad, Karnataka, India<br>581331</p>                    </span>
+    
+    </div>
+
+  </div>
+
+  <!-- Bottom -->
+  <div class="footer-bottom">
+    <p>© 2026 Agnihotri Aerospace. All rights reserved.</p>
+  </div>
+</footer>
+
+    <script>
+        /* --- 3. JAVASCRIPT FOR MODAL --- */
+function openModal() {
+    const modal = document.getElementById("contactModal");
+    modal.style.display = "flex";
+    
+    // Lock the background page immediately
+    document.body.classList.add("stop-scroll");
+}
+
+function closeModalBtn() {
+    const modal = document.getElementById("contactModal");
+    modal.style.display = "none";
+    
+    // Unlock the background page
+    document.body.classList.remove("stop-scroll");
+}
+
+// Close if user clicks the dark area
+function closeModal(event) {
+    if (event.target.id === "contactModal") {
+        closeModalBtn();
+    }
+}
+          // --- 1. NAVIGATION MENU ---
+    var navLinks = document.getElementById("navLinks");
+    var menuOverlay = document.getElementById("menuOverlay");
+
+    function showMenu() {
+        navLinks.style.right = "0";
+        menuOverlay.classList.add("active");
+    }
+
+    function hideMenu() {
+        navLinks.style.right = "-200px";
+        menuOverlay.classList.remove("active");
+    }
+
+    /* Close when clicking outside */
+    menuOverlay.addEventListener("click", hideMenu);
+const btn = document.querySelector(".dropdown-btn");
+const menu = document.querySelector(".dropdown-menu");
+
+btn.addEventListener("click", function (e) {
+    // This prevents the click from 'bubbling up' and 
+    // accidentally triggering other menu close functions
+    e.preventDefault(); 
+    e.stopPropagation();
+    menu.classList.toggle("show");
+});
+
+// Close dropdown if user clicks anywhere else on the screen
+document.addEventListener("click", function (e) {
+    if (!btn.contains(e.target)) {
+        menu.classList.remove("show");
+    }
+});
+
+    </script>
+</body>
+</html>
