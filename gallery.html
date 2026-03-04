@@ -462,19 +462,56 @@
                 width: 100%;
                 background: transparent;
             }
-        }
-
-        @media (max-width: 768px) {
             .future-grid-inner {
                 grid-template-columns: 1fr; 
             }
-            
             .future-unified-box {
                 padding: 25px !important;
             }
-            
             .future-box {
                 height: 250px;
+            }
+        }
+
+        /* =========================================================
+           MODEL-VIEWER (GLB) & VIDEO MOBILE FIX
+           ========================================================= */
+        @media (max-width: 768px) {
+            /* Force the parent containers to act as strict blocks */
+            .future-media, 
+            .future-box {
+                display: block !important;
+                width: 100% !important;
+                min-height: 350px !important; 
+                height: 350px !important;
+                position: relative !important;
+                overflow: hidden !important;
+            }
+
+            /* Force 3D models and videos to absolutely fill the boxes */
+            model-viewer,
+            .future-box video {
+                display: block !important;
+                position: absolute !important;
+                top: 0 !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 350px !important; /* Hard pixel replacement for 100% */
+                min-height: 350px !important;
+                background-color: transparent !important;
+                outline: none !important;
+                object-fit: contain !important;
+            }
+
+            /* Stack grid items */
+            .future-grid-inner {
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 20px !important;
+            }
+            
+            .future-split-box {
+                gap: 20px !important;
             }
         }
        </style>
@@ -606,6 +643,7 @@
 
         <!-- LEFT SIDE (Model or Image) -->
         <div class="future-media">
+            <!-- FIX: Added loading="eager", ar, and hard pixel height inside style -->
             <model-viewer 
                 src="images/rocket.glb"
                 auto-rotate
@@ -613,7 +651,9 @@
                 disable-zoom
                 shadow-intensity="1"
                 exposure="1.2"
-                style="width:100%; height:100%;">
+                loading="eager"
+                ar
+                style="width:100%; height:350px;">
             </model-viewer>
         </div>
 
@@ -637,7 +677,16 @@
                 <video src="images/hp1.mp4" autoplay muted loop playsinline></video>
             </div>
             <div class="future-box">
-                <model-viewer src="images/hopper.glb" auto-rotate camera-controls disable-zoom style="width:100%; height:100%;"></model-viewer>
+                <!-- FIX: Added loading="eager", ar, and hard pixel height inside style -->
+                <model-viewer 
+                    src="images/hopper.glb" 
+                    auto-rotate 
+                    camera-controls 
+                    disable-zoom 
+                    loading="eager"
+                    ar
+                    style="width:100%; height:350px;">
+                </model-viewer>
             </div>
         </div>
         <div class="future-text-inner">
