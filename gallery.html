@@ -57,25 +57,74 @@
         
         .nav-links ul li::after { content: ''; width: 0%; height: 2px; background: var(--accent); display: block; margin: auto; transition: 0.5s; }
         .nav-links ul li:hover::after { width: 100%; }
+        /* ================= MOBILE NAV FIX (DROPDOWN BOX) ================= */
+@media(max-width: 768px) {
+    nav {
+        position: relative; /* Anchor for the absolute box */
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 70px;             /* Positioned below header */
+        right: 20px;           /* Distance from right edge */
+        width: 220px;
+        height: auto;          /* BOX ENDS AFTER LAST ITEM - NO SIDEBAR */
+        background: #0f172a;   /* Dark background */
+        border-radius: 12px;
+        border: 1px solid rgba(255,255,255,0.1);
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        padding: 10px 0;
+        z-index: 1001;
+        text-align: left;
+        
+        /* Animation: Hidden state */
+        display: none;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* Class to show the menu */
+    .nav-links.active {
+        display: block;
+        opacity: 1;
+        transform: translateY(0);
+    }
+
+    .nav-links ul li {
+        display: block;
+        padding: 12px 20px;
+    }
+
+    /* Hide the 'X' button inside the menu */
+    .nav-links .fa-times {
+        display: none !important;
+    }
+
+    nav > .fa-bars {
+        display: block;
+        color: #fff;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    /* Desktop dropdown compatibility within mobile box */
+    .dropdown-menu.show {
+        display: block;
+        position: relative;
+        background: rgba(255,255,255,0.05);
+        margin-top: 5px;
+        width: 100%;
+        box-shadow: none;
+    }
+}
+
+/* Fix for footer spacing if needed */
+.footer-col.links {
+    margin-bottom: 20px;
+}
         
         @media(max-width: 768px) {
-            .nav-links { 
-                position: absolute; 
-                background: linear-gradient(#000a1a, #000); 
-                height: 100vh; 
-                width: 200px; 
-                top: 0; 
-                right: -200px; 
-                text-align: left; 
-                z-index: 1001; 
-                transition: 0.5s; 
-                padding-top: 60px;
-                box-shadow: -5px 0 15px rgba(0,0,0,0.5);
-            }
-            .nav-links ul li { display: block; padding: 15px 25px; }
-            nav .fa { display: block; color: #fff; margin: 10px; font-size: 22px; cursor: pointer; }
-            .nav-links .fa { position: absolute; top: 10px; left: 10px; color:#aaddff; }
-        }
 
         /* --- HEADER --- */
         .sub-header-content { height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 0 15px; }
@@ -882,5 +931,6 @@ window.dispatchEvent(new Event('scroll'));
 </script>
 </body>
 </html>
+
 
 
