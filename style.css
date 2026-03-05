@@ -68,20 +68,78 @@ p strong, p b {
 }
 
 /*mobile view of image*/
+/* ===================================== */
+/* MOBILE VIEW (Header, Image, & Text)   */
+/* ===================================== */
 @media (max-width: 768px) {
-
+    
+    /* 1. Lock the header to exactly 40% of the mobile screen */
     .header {
+        height: 40vh; 
         min-height: 40vh;
-        padding-bottom: 40px;   /* space for vision text */
+        padding-bottom: 0;
+        display: flex; /* Changes layout to handle text better */
+        align-items: center;
     }
 
+    /* 2. Fix the "Stretched" image issue */
+    .bg-image {
+        height: 100%;
+        width: 100%;
+        /* If 'cover' still cuts off too much of your image, 
+           change it to 'contain' to show the whole image cleanly */
+        object-fit: cover; 
+        object-position: center center; /* Keeps the focus in the middle */
+    }
+
+    /* 3. Keep text aligned right, but perfectly scaled for 40vh */
+    .text-box1 {
+        position: absolute;
+        top: 50%;
+        right: 5%;
+        transform: translateY(-50%);
+        width: 90%;
+        max-width: 400px;
+        z-index: 2;
+    }
+
+    /* 4. Fluid Typography: Shrinks smoothly based on screen width */
+    .text-box1 h1 {
+        /* clamp(minimum, preferred, maximum) */
+        font-size: clamp(1.4rem, 6vw, 2.2rem); 
+        line-height: 1.2;
+    }
+
+    .text-box1 p {
+        font-size: clamp(0.8rem, 3.5vw, 14px); 
+        line-height: 1.5;
+        margin-top: 15px;
+        max-width: 100%;
+    }
+
+    /* Keeps your vision-bottom settings intact */
     .vision-bottom {
         position: relative;
         bottom: auto;
         margin-top: 40px;
         padding: 0 20px;
     }
+}
 
+/* ===================================== */
+/* SMALL MOBILE (Under 480px)            */
+/* ===================================== */
+@media (max-width: 480px) {
+    .text-box1 {
+        right: 4%;
+        width: 92%;
+    }
+    .text-box1 h1 {
+        font-size: clamp(1.3rem, 7vw, 1.8rem);
+    }
+    .text-box1 p {
+        font-size: clamp(0.75rem, 4vw, 13px);
+    }
 }
 /* DARK OVERLAY */
 .header::after {
@@ -135,58 +193,6 @@ p strong, p b {
     color: #00d2be;
     font-weight: 600;
 }
-
-/* ===================================== */
-/* TABLET */
-/* ===================================== */
-
-@media (max-width: 992px) {
-    .text-box1 {
-        right: 5%;
-        max-width: 450px;
-    }
-}
-
-/* ===================================== */
-/* MOBILE */
-/* ===================================== */
-
-@media (max-width: 768px) {
-
-    .text-box1 {
-        right: 4%;
-        max-width: 90%;
-    }
-
-    .text-box1 h1 {
-        line-height: 1.3;
-    }
-
-    .text-box1 p {
-        max-width: 100%;
-    }
-}
-
-/* ===================================== */
-/* SMALL MOBILE */
-/* ===================================== */
-
-@media (max-width: 480px) {
-
-    .text-box1 {
-        right: 3%;
-        max-width: 95%;
-    }
-
-    .text-box1 h1 {
-        font-size: 1.6rem;
-    }
-
-    .text-box1 p {
-        font-size: 0.9rem;
-    }
-}
-
 
 /* menu overlay */
 .menu-overlay {
@@ -507,21 +513,6 @@ nav img {
     text-align: left; 
 }
 
-/* Mobile Responsive: Center it back on small screens */
-@media(max-width: 700px) {
-    .vision-bottom {
-        width: auto;
-        right: 5%;
-        left: 5%;
-        transform: none; /* Centers it again on mobile */
-        text-align: center;
-        bottom: 20px;
-        padding: 15px;
-    }
-    .vision-bottom p {
-        text-align: center;
-    }
-}
 
 nav .fa {
     display: none;
@@ -2246,3 +2237,4 @@ text-align: left;
         animation: pageLoadFade 1.5s ease-out forwards;
 
     }
+
