@@ -229,6 +229,20 @@ form.addEventListener("submit", function(e) {
     });
 });
 
+// --- CLOSE MOBILE MENU WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
+window.addEventListener("pageshow", function () {
+    var navLinks = document.getElementById("navLinks");
+    var menuOverlay = document.getElementById("menuOverlay");
+
+    if (navLinks) {
+        navLinks.style.right = "-200px";
+    }
+
+    if (menuOverlay) {
+        menuOverlay.classList.remove("active");
+    }
+});
+
     </script>
 </body>
 </html>
