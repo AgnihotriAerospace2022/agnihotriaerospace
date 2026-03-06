@@ -230,7 +230,7 @@ Agnihotri Aerospace is engineering the infrastructure of the future with advance
 target="_blank"
 class="hero-btn red-btn"
 style="margin-top:20px; display:inline-block; text-decoration:none;">
-  <i class="fa fa-download"></i>  Get Quotation
+  <i class="fa fa-download"></i>  Enquire now
 </a><p class="sales-note">Advanced software for aerospace missions.</p>
 
 
@@ -488,6 +488,20 @@ style="margin-top:20px; display:inline-block; text-decoration:none;">
     }
     // Start this timer independently
     setInterval(changePropulsionSlide, 4000);
+
+    // --- CLOSE MOBILE MENU WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
+window.addEventListener("pageshow", function () {
+    var navLinks = document.getElementById("navLinks");
+    var menuOverlay = document.getElementById("menuOverlay");
+
+    if (navLinks) {
+        navLinks.style.right = "-200px";
+    }
+
+    if (menuOverlay) {
+        menuOverlay.classList.remove("active");
+    }
+});
 
 </script>
     
