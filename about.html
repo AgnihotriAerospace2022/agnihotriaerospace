@@ -298,55 +298,104 @@ transition:var(--transition);
 .grid-2{grid-template-columns:1fr;}
 }
 /* ================= FOUNDER SECTION ================= */
+/* ================= FOUNDER SECTION ================= */
 
-.founder-section{
-  padding:120px 8%;
-  background:#0f172a;
-  text-align:center;
+.founder-section {
+  padding: 80px 8%;
+  background: #0f172a;
+  text-align: center;
 }
 
-.founder-section h2{
-  font-size:42px;
-  letter-spacing:4px;
-  margin-bottom:80px;
+.founder-section h2 {
+  /* Scales title between 28px and 42px */
+  font-size: clamp(28px, 5vw, 42px);
+  letter-spacing: 4px;
+  margin-bottom: 60px;
 }
 
-.founder-container{
-  display:flex;
-  justify-content:center;
-  align-items:stretch;
-  gap:60px;
-  max-width:1100px;
-  margin:0 auto;
+.founder-container {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  gap: 3vw; /* Gap scales with screen width */
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
-.founder-card{
-  flex:1;
-  display:flex;
-  align-items:center;
-  gap:25px;
-  padding:30px 35px;
-  border-radius:16px;
-  background:rgba(255,255,255,0.05);
-  border:1px solid rgba(255,255,255,0.08);
-  transition:all 0.3s ease;
+.founder-card {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 2vw; /* Inner spacing scales */
+  border-radius: 16px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  transition: all 0.3s ease;
 }
 
 .founder-card img {
-  width: 160px;          /* slightly bigger */
-  height: 180px;
+  /* Image size zooms based on width: Min 100px, Max 160px */
+  width: clamp(100px, 12vw, 160px); 
+  height: auto;
+  aspect-ratio: 1/1.1; /* Keeps the slightly tall shape */
   border-radius: 50%;
   object-fit: cover;
-  object-position: center;
-
   padding: 4px;
   background: linear-gradient(135deg,#66fcf1,#1f2833);
-
-  box-shadow: 0 15px 40px rgba(0,0,0,0.6);
-  transition: 0.4s ease;
-
-  image-rendering: auto;     /* ensures sharp rendering */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
+
+.founder-info h3 {
+  /* Name scales */
+  font-size: clamp(16px, 1.8vw, 22px);
+  margin-bottom: 4px;
+}
+
+.founder-info h4 {
+  /* Title scales */
+  font-size: clamp(12px, 1.2vw, 14px);
+  color: var(--accent);
+}
+
+/* ================= MOBILE RESPONSIVE (Up to 890px) ================= */
+
+@media(max-width: 890px) {
+  .founder-container {
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .founder-card {
+    width: 90%; /* Card takes up most of screen width */
+    max-width: 400px;
+    flex-direction: column; /* Stack image on top of text */
+    text-align: center;
+    padding: 30px 20px;
+  }
+
+  .founder-info {
+    text-align: center;
+  }
+
+  .founder-card img {
+    /* Larger zoom for mobile view */
+    width: clamp(120px, 40vw, 180px); 
+    margin-bottom: 15px;
+  }
+
+  .founder-info h3 {
+    font-size: 6vw; /* Zoomed font for mobile */
+  }
+
+  .founder-info h4 {
+    font-size: 3.5vw;
+  }
+}
+
+
+
 
 .founder-card:hover img{
   transform:scale(1.05);
@@ -358,20 +407,8 @@ transition:var(--transition);
   text-align:left;
 }
 
-.founder-info h3{
-  font-size:20px;
-  margin-bottom:6px;
-}
-
-.founder-info h4{
-  font-size:13px;
-  letter-spacing:1px;
-  color:var(--accent);
-  margin-bottom:10px;
-}
-
 .founder-info p{
-  font-size:14px;
+  font-size:clamp(14px, 1.2vw, 16px);
   color:var(--sub);
   line-height:1.5;
 }
@@ -382,30 +419,68 @@ transition:var(--transition);
     }
 }
 
-/* Responsive */
-
 @media(max-width:768px){
-  .founder-container {
+  .hero {
+    height: 35vh; 
+    min-height: 280px; 
+    position: relative;
+    overflow: hidden; /* Keeps the blur from leaking out of the box */
+    display: flex;
     flex-direction: column;
-    align-items: center; /* Centers cards on mobile */
+    justify-content: center;
+    align-items: center;
+    background: none; /* Remove background from the main container */
+    padding: 60px 30px 20px 30px; 
+    margin-bottom: 0;
+    
   }
 
-  .founder-card {
+  /* --- The Blurry Background Layer --- */
+  .hero::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    /* Use your image here */
+    background: 
+        linear-gradient(rgba(0,0,0,0.4), rgba(11,12,16,0.6)), 
+        url('images/aboutbg.png') no-repeat center center/cover;
+    
+    filter: blur(8px); /* Adjust the '8px' to make it more or less blurry */
+    transform: scale(1.1); /* Prevents white edges caused by blurring */
+    z-index: -1; /* Puts the image behind the text */
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1; /* Ensures text sits above the blur */
     width: 100%;
-    max-width: 450px; /* Prevents cards from becoming too wide on tablets */
-    flex-direction: column; /* Stacks Image on Top of Text */
     text-align: center;
-    padding: 40px 20px;
+    background: transparent !important;
   }
 
-  .founder-info {
-    text-align: center; /* Centers names and titles */
-    margin-top: 15px;
+  .hero-content h1 {
+    font-size: clamp(18px, 8vw, 30px) !important; 
+    line-height: 1.1;
+    margin-bottom: 12px;
+    color: #ffffff;
+    text-shadow: 0 2px 15px rgba(0,0,0,0.8);
   }
 
-  .founder-card img {
-    width: 140px; /* Slightly smaller for mobile screens */
-    height: 170px;
+  .hero-content p {
+    display: block !important; 
+    font-size: clamp(12px, 3.8vw, 15px) !important;
+    line-height: 1.6;
+    color: #ffffff; 
+    margin: 0 auto;
+    padding: 0 10px !important; 
+    max-width: 100%; 
+    opacity: 1;
+  }
+
+  /* Clean Nav */
+  nav {
+    background: transparent !important;
+    backdrop-filter: none !important;
   }
 }
 /* ================= ANIMATION ================= */
@@ -419,7 +494,58 @@ transition:1s;
 opacity:1;
 transform:translateY(0);
 }
+@media(max-width:768px){
+  /* 1. Adjust Hero Height & Background */
+  .hero {
+    height: 35vh; /* Or use 60vw if you want it to keep image ratio */
+    background: url('images/aboutbg.png') no-repeat center center/cover;
+    /* Removed the linear-gradient(rgba(0,0,0,.4)...) to make it plain */
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 
+  /* 2. Scale the Main Heading */
+  .hero-content h1 {
+    font-size: 8vw; /* Makes font depend on screen size */
+    text-align: center;
+    margin: 0;
+  }
+
+  /* 3. Scale the Logo and Nav Bar */
+  nav {
+    padding: 4vw 6vw; /* Padding scales with screen */
+    background: transparent; /* Ensures no gray bar at the top */
+  }
+
+  nav img {
+    width: 25vw; /* Logo scales with screen size */
+    height: auto;
+  }
+
+  /* 4. Scale the Hamburger Menu Icon */
+  nav > .fa-bars {
+    font-size: 7vw; /* Icon size depends on screen */
+    color: #fff;
+  }
+
+  /* 5. Hide the paragraph on small screens to keep it "Clean" */
+  .hero-content p {
+    display: none; 
+  }
+}
+@media(max-width:768px){
+  .footer-bottom p {
+    font-size:clamp(8px, 3vw, 14px);
+    text-align: center;
+}
+}
+@media(max-width:768px){
+  .founder-info h3 {
+    font-size:clamp(12px, 3vw, 20px); /* Zoomed font for mobile */
+  }
+}
 </style>
 </head>
 <body>
@@ -610,6 +736,20 @@ window.addEventListener("scroll", function() {
         // Only shows again when at very top
     }
 
+});
+
+// --- CLOSE MOBILE MENU WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
+window.addEventListener("pageshow", function () {
+    var navLinks = document.getElementById("navLinks");
+    var menuOverlay = document.getElementById("menuOverlay");
+
+    if (navLinks) {
+        navLinks.style.right = "-200px";
+    }
+
+    if (menuOverlay) {
+        menuOverlay.classList.remove("active");
+    }
 });
 
 </script>
