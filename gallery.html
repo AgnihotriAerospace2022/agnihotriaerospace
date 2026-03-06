@@ -50,7 +50,19 @@
 
         /* --- NAV --- */
         nav { display: flex; padding: 2% 6%; justify-content: space-between; align-items: center; z-index: 1000; position: relative; }
-        nav img { width: 150px; }
+/* --- NAV LOGO FIX --- */
+nav img { 
+    width: clamp(100px, 15vw, 150px); /* Min 100px, Fluid 15% of width, Max 150px */
+    height: auto; 
+    display: block;
+    transition: width 0.3s ease;
+}
+
+@media (max-width: 480px) {
+    nav img {
+        width: 110px; /* Specific lock for very small phones */
+    }
+}
         .nav-links { flex: 1; text-align: right; }
         .nav-links ul li { list-style: none; display: inline-block; padding: 8px 12px; position: relative; }
         .nav-links ul li a { color: #fff; text-decoration: none; font-size: 13px; font-weight: 500; }
@@ -920,6 +932,20 @@ document.addEventListener("click", function(event) {
         nav.style.right = "-200px";
     }
 
+});
+
+// --- CLOSE MOBILE MENU WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
+window.addEventListener("pageshow", function () {
+    var navLinks = document.getElementById("navLinks");
+    var menuOverlay = document.getElementById("menuOverlay");
+
+    if (navLinks) {
+        navLinks.style.right = "-200px";
+    }
+
+    if (menuOverlay) {
+        menuOverlay.classList.remove("active");
+    }
 });
 </script>
 </body>
