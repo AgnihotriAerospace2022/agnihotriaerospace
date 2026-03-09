@@ -3,6 +3,10 @@
     padding: 0;
     font-family: 'Poppins', sans-serif;
 }
+html, body {
+    width: 100%;
+    overflow-x: hidden;
+}
 
 
 /* Ensure the Header acts as the container */
@@ -774,3 +778,4 @@ h1 { font-size: 36px; font-weight: 600; }
     .media-slide { width: 100% !important; height: 100% !important; position: absolute; object-fit: contain; opacity: 0; visibility: hidden; transform: scale(0.8); transition: all 0.8s ease; }
     .media-slide.active { opacity: 1; visibility: visible; transform: scale(1); }
 }
+
