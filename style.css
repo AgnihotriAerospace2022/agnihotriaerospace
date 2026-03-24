@@ -16,7 +16,7 @@ html, body {
     
     /* Forces the container to be half the screen instead of full screen */
     .header {
-        height: 50vh !important; 
+        height: 40vh !important; 
         min-height: 400px;
         overflow: hidden;
     }
@@ -37,7 +37,7 @@ html, body {
     
     /* Optional: Apply the same fix to your Space section if it has the same issue */
     .space-hero {
-        height: 50vh !important;
+        height: 40vh !important;
         min-height: 400px !important;
     }
 }
