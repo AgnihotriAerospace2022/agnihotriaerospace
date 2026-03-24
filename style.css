@@ -1,3 +1,5 @@
+
+
 * {
     margin: 0;
     padding: 0;
@@ -35,24 +37,6 @@ body {
 @keyframes pageLoadFade {
     0% { opacity: 0; transform: translateY(20px); }
     100% { opacity: 1; transform: translateY(0); }
-}
-/* ============================================================ */
-/* UNIFIED RESPONSIVE ENGINE (Mobile, Mobile-Desktop & Desktop) */
-/* ============================================================ */
-
-/* 1. Global Scaling Fix */
-:root {
-    --accent: #00d2be;
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-}
-
-/* 2. Desktop & Large Screens (Default) */
-.header {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    padding: 0 8%;
 }
 
 p {
@@ -796,4 +780,3 @@ h1 { font-size: 36px; font-weight: 600; }
     .media-slide { width: 100% !important; height: 100% !important; position: absolute; object-fit: contain; opacity: 0; visibility: hidden; transform: scale(0.8); transition: all 0.8s ease; }
     .media-slide.active { opacity: 1; visibility: visible; transform: scale(1); }
 }
-
