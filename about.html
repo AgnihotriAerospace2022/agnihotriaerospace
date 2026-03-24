@@ -779,9 +779,9 @@ window.addEventListener("scroll", function() {
     }
 
 });
-
-// --- CLOSE MOBILE MENU WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
-window.addEventListener("pageshow", function () {
+// --- CLOSE ALL MENUS WHEN PAGE LOADS OR RETURNS WITH BACK BUTTON ---
+window.addEventListener("pageshow", function (event) {
+    // 1. Close the main mobile side menu
     var navLinks = document.getElementById("navLinks");
     var menuOverlay = document.getElementById("menuOverlay");
 
@@ -792,6 +792,12 @@ window.addEventListener("pageshow", function () {
     if (menuOverlay) {
         menuOverlay.classList.remove("active");
     }
+
+    // 2. Close the Product dropdown list (removes the "show" class)
+    var dropdownMenus = document.querySelectorAll(".dropdown-menu");
+    dropdownMenus.forEach(function(menu) {
+        menu.classList.remove("show");
+    });
 });
 
 </script>
