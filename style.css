@@ -9,6 +9,38 @@ html, body {
     width: 100%;
     overflow-x: hidden;
 }
+/* ========================================================= */
+/* FIX FOR "DESKTOP SITE" VIEW ON MOBILE PHONES (Portrait)   */
+/* ========================================================= */
+@media (min-width: 769px) and (orientation: portrait) {
+    
+    /* Forces the container to be half the screen instead of full screen */
+    .header {
+        height: 50vh !important; 
+        min-height: 400px;
+        overflow: hidden;
+    }
+
+    /* Ensures the image crops properly like a horizontal banner */
+    .bg-image {
+        height: 100% !important;
+        width: 100% !important;
+        object-fit: cover !important;
+        object-position: center !important;
+    }
+    
+    /* Adjust the text so it stays in the right place inside this smaller box */
+    .text-box1 {
+        top: 50% !important;
+        transform: translateY(-50%) !important;
+    }
+    
+    /* Optional: Apply the same fix to your Space section if it has the same issue */
+    .space-hero {
+        height: 50vh !important;
+        min-height: 400px !important;
+    }
+}
 
 
 /* Ensure the Header acts as the container */
