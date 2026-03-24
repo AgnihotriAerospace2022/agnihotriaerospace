@@ -41,7 +41,33 @@ html, body {
         min-height: 400px !important;
     }
 }
+/* ========================================================= */
+/* FIX FOR "DESKTOP SITE" VIEW ON MOBILE PHONES (Portrait)   */
+/* ========================================================= */
+@media (min-width: 769px) and (orientation: portrait) {
+    
+    /* Forces the Contact Page header image to be 40vh */
+    .sub-header {
+        height: 40vh !important;
+        min-height: 300px !important;
+        background-position: center !important;
+        background-size: cover !important;
+        position: relative !important; /* Required for absolute centering the text */
+        overflow: hidden;
+    }
 
+    /* Centers the "Contact Us" heading perfectly in the middle of the box */
+    .sub-header h1 {
+        margin: 0 !important;
+        position: absolute !important;
+        top: 55% !important; /* Pushed slightly below the nav bar */
+        left: 50% !important;
+        transform: translate(-50%, -50%) !important;
+        font-size: clamp(3rem, 7vw, 5rem) !important; /* Scales font down to fit */
+        width: 100%;
+        text-align: center !important;
+    }
+}
 
 /* Ensure the Header acts as the container */
 /* 1. Reset the Header Container */
