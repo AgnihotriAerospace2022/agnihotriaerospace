@@ -13,6 +13,32 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     
 <style>
+  /* ========================================================= */
+/* FIX FOR "DESKTOP SITE" VIEW ON MOBILE PHONES (Portrait)   */
+/* ========================================================= */
+@media (min-width: 769px) and (orientation: portrait) {
+    
+    /* Forces the About Page hero image to be 40vh instead of 100vh */
+    .hero {
+        height: 40vh !important;
+        min-height: 350px !important; /* Prevents it from getting too squished */
+        background-position: center !important;
+        background-size: cover !important;
+        overflow: hidden;
+    }
+
+    /* Scales the massive desktop font down slightly so it fits inside the new 40vh box */
+    .hero-content h1 {
+        font-size: clamp(3rem, 7vw, 5rem) !important;
+        margin-bottom: 10px !important;
+    }
+
+    /* Keeps the paragraph readable inside the smaller banner */
+    .hero-content p {
+        font-size: clamp(14px, 2.5vw, 18px) !important;
+        max-width: 80% !important;
+    }
+}
 
 /* ================= GLOBAL ================= */
 
